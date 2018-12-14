@@ -15,11 +15,11 @@
     <script>
       document.querySelector("#toggleMenuOn").addEventListener("click",(e)=>{
         document.querySelector(".restofpage").classList.add("hidden");
-        document.querySelector(".navigationmenu").style="display:flex"
+        document.querySelector(".navigationmenu").classList.remove("hidden");
       });
       document.querySelector("#toggleMenuOff").addEventListener("click",(e)=>{
         document.querySelector(".restofpage").classList.remove("hidden");
-        document.querySelector(".navigationmenu").style="display:none"
+        document.querySelector(".navigationmenu").classList.add("hidden");
       });
     </script>
   </body>
