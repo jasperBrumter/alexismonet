@@ -1,0 +1,79 @@
+// Place all the styles related to the pages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+body {
+	margin: 0;
+}
+.navbar {
+	width: 100%;
+	height: 6vh;
+	min-height: 40px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: black;
+	letter-spacing: 3px;
+	display: none;
+}
+
+.pagecontent {
+	width: 100%;
+	height: 100vh;
+	padding: 2px 0;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: flex-start;
+	justify-content: flex-start;
+	overflow: scroll;
+}
+
+.leftcolumn {
+	width: 20%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	position: fixed;
+}
+.rightcolumn {
+	margin-left: 20%;
+	min-margin-left: 200px;
+	width: 80%;
+	display: flex;
+	align-items: flex-start;
+	justify-content: flex-start;
+	flex-wrap: wrap;
+	img {
+		width: 33%;
+	}
+
+}
+
+.photocolumn1, .photocolumn2, .photocolumn3 {
+	flex: 1 0 30%;
+	min-width: 370px;
+	margin: 0 3px;
+	img {
+		width: 100%;
+		margin: 3px 0;
+	}
+}
+
+
+@media screen and (max-width: 800px) {
+  .leftcolumn {
+    display:none;
+  }
+  .rightcolumn {
+  	margin-left: 0;
+  	width: 100%;
+  }
+  .navbar {
+  	display:flex;
+  	align-items: center;
+  	justify-content: center;
+	position: fixed;
+	background-color: white;
+  }
+}
