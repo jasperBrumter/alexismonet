@@ -1,41 +1,6 @@
-<div class="navigationmenu hidden">
-	<div class="navbarMenu">
-		<%= link_to "https://www.instagram.com/ralphmonet/" do %>
-			<i class="fab fa-instagram"></i>
-		<% end %>
-		<p id="toggleMenuOff">
-			CLOSE<i class="fas fa-times"></i>
-		</p>
-	</div>
-	<div class="menuoptions">
-		<div class="menuoption">
-			<h3><strong>photo album1</strong></h3>
-		</div>
-		<div class="menuoption">
-			<h3>photo album2</h3>
-		</div>
-		<div class="menuoption">
-			<h3>photo album3</h3>
-		</div>
-		<div class="menuoption">
-			<h3>photo album4</h3>
-		</div>
-		<div class="menuoption">
-			<h3>photo album5</h3>
-		</div>
-
-	</div>
-
-</div>
+<%= render "shared/hidden_navbar" %>
 <div class="restofpage">
-	<div class="navbarRest">
-		<%= link_to "https://www.instagram.com/ralphmonet/" do %>
-			<i class="fab fa-instagram"></i>
-		<% end %>
-		<h2>ALEXIS MONET</h2>
-		<i class="fas fa-bars" id="toggleMenuOn"></i>
-
-	</div>
+	<%= render "shared/visible_navbar" %>
 	<div class="pagecontent">
 		<div class="leftcolumn">
 			<div class="leftTitle">
@@ -65,41 +30,117 @@
 			</div>
 		</div>
 		<div class="rightcolumn">
-				<%= image_tag "ticket_1_derails.jpg" %>
-				<%= image_tag "ticket_1_derails.jpg" %>
-				<%= image_tag "ticket_1_derails.jpg" %>
-				<%= image_tag "ticket_1_derails.jpg" %>
-				<%= image_tag "ticket_1_derails.jpg" %>
-				<%= image_tag "ticket_1_derails.jpg" %>
-				<%= image_tag "ticket_1_derails.jpg" %>
-				<%= image_tag "ticket_1_derails.jpg" %>
 
-				<%= image_tag "ticket_2_gen.jpg" %>
-				<%= image_tag "ticket_2_gen.jpg" %>
-				<%= image_tag "ticket_2_gen.jpg" %>
-				<%= image_tag "ticket_2_gen.jpg" %>
-				<%= image_tag "ticket_2_gen.jpg" %>
-				<%= image_tag "ticket_2_gen.jpg" %>
-				<%= image_tag "ticket_2_gen.jpg" %>
-				<%= image_tag "ticket_2_gen.jpg" %>
-
-				<%= image_tag "ticket_2_der.jpg" %>
-				<%= image_tag "ticket_2_der.jpg" %>
-				<%= image_tag "ticket_2_der.jpg" %>
-				<%= image_tag "ticket_2_der.jpg" %>
-				<%= image_tag "ticket_2_der.jpg" %>
-				<%= image_tag "ticket_2_der.jpg" %>
+				<%= image_tag "ticket_1_derails.jpg", class: "image" %>
+				<%= image_tag "ticket_2_gen.jpg", class: "image" %>
+				<%= image_tag "ticket_2_der.jpg", class: "image" %>
+				<%= image_tag "ticket_1_derails.jpg", class: "image" %>
+				<%= image_tag "ticket_2_gen.jpg", class: "image" %>
+				<%= image_tag "ticket_2_der.jpg", class: "image" %>
 
 		</div>
 	</div>
 </div>
+<div class="slideshow hidden">
+	<div class="return">
+		<p id="closeSlideshow">CLOSE <i class="fas fa-times"></i></p>
+	</div>
+	<div class="slides">
+		<div class="slide">
+			<%= image_tag "ticket_1_derails.jpg" %>
+		</div>
+		<div class="slide">
+			<%= image_tag "ticket_2_gen.jpg" %>
+		</div>
+		<div class="slide">
+			<%= image_tag "ticket_2_der.jpg" %>
+		</div>
+		<div class="slide">
+			<%= image_tag "ticket_1_derails.jpg" %>
+		</div>
+		<div class="slide">
+			<%= image_tag "ticket_2_gen.jpg" %>
+		</div>
+		<div class="slide">
+			<%= image_tag "ticket_2_der.jpg" %>
+		</div>
+	</div>
+</div>
+
 <script>
-	document.querySelector("#toggleMenuOn").addEventListener("click",(e)=>{
-		document.querySelector(".restofpage").classList.add("hidden");
-		document.querySelector(".navigationmenu").style="display:flex"
+	const slideshow = document.querySelector(".slideshow")
+	const restofpage = document.querySelector(".restofpage")
+	const images = document.querySelectorAll(".image")
+
+	const allSlides = document.querySelectorAll(".slide");
+
+	const slideWindow = document.querySelector(".slides")
+
+
+	document.querySelectorAll(".image").forEach((image) => {
+		image.addEventListener("click", (e) => {
+			restofpage.classList.add("hidden")
+			slideshow.classList.remove("hidden")
+			for (let i=0; i< images.length; i++ ) {
+				if (image === images[i]) {
+					var imageIndex = i;
+				}
+			}
+			var fullWidth = slideWindow.scrollWidth;
+			slideWindow.scroll(fullWidth/(allSlides.length) * imageIndex, 0);
+		})
+	})
+	document.querySelector("#closeSlideshow").addEventListener("click", (e) => {
+		restofpage.classList.remove("hidden")
+		slideshow.classList.add("hidden")
 	});
-	document.querySelector("#toggleMenuOff").addEventListener("click",(e)=>{
-		document.querySelector(".restofpage").classList.remove("hidden");
-		document.querySelector(".navigationmenu").style="display:none"
-	});
+
+
+	slideWindow.addEventListener("click",(e) => {
+		var windowWidth = window.innerWidth;
+		var fullWidth = slideWindow.scrollWidth;
+		if (e["screenX"] > (windowWidth/2) && slideWindow.scrollLeft % window.innerWidth == 0) {
+
+			if (slideWindow.scrollLeft + window.innerWidth == fullWidth) {
+				slideWindow.scroll(-fullWidth,0);
+			}
+			else {
+				slideWindow.scroll(slideWindow.scrollLeft + fullWidth/(allSlides.length), 0);
+			}
+		}
+		else if (slideWindow.scrollLeft % window.innerWidth == 0) {
+			if (slideWindow.scrollLeft == 0) {
+				slideWindow.scroll(fullWidth,0);
+			}
+			else {
+				slideWindow.scroll(slideWindow.scrollLeft - fullWidth/(allSlides.length), 0);
+			}
+		}
+	})
+
+	window.addEventListener("keyup", (e) => {
+		var windowWidth = window.innerWidth;
+		var fullWidth = slideWindow.scrollWidth;
+		if (e["key"] == "Escape") {
+			restofpage.classList.remove("hidden")
+			slideshow.classList.add("hidden")
+		}
+		if (e["key"] == "ArrowRight" && slideWindow.scrollLeft % window.innerWidth == 0) {
+			if (slideWindow.scrollLeft + window.innerWidth == fullWidth) {
+				slideWindow.scroll(-fullWidth,0);
+			}
+			else {
+				slideWindow.scroll(slideWindow.scrollLeft + fullWidth/(allSlides.length), 0);
+			}
+		}
+		if (e["key"] == "ArrowLeft" && slideWindow.scrollLeft % window.innerWidth == 0) {
+			if (slideWindow.scrollLeft == 0) {
+				slideWindow.scroll(fullWidth,0);
+			}
+			else {
+				slideWindow.scroll(slideWindow.scrollLeft - fullWidth/(allSlides.length), 0);
+			}
+		}
+	})
+
 </script>

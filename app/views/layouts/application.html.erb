@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title> Alexis Monet | Photography | Modelling | Acting | </title>
+    <title> Alexis Monet | Photography | Modelling | Acting | Lifestyle | </title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <link href="//use.fontawesome.com/releases/v5.0.13/css/all.css" rel="stylesheet">
@@ -11,5 +11,16 @@
 
   <body>
     <%= yield %>
+    
+    <script>
+      document.querySelector("#toggleMenuOn").addEventListener("click",(e)=>{
+        document.querySelector(".restofpage").classList.add("hidden");
+        document.querySelector(".navigationmenu").style="display:flex"
+      });
+      document.querySelector("#toggleMenuOff").addEventListener("click",(e)=>{
+        document.querySelector(".restofpage").classList.remove("hidden");
+        document.querySelector(".navigationmenu").style="display:none"
+      });
+    </script>
   </body>
 </html>
