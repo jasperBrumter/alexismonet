@@ -6,7 +6,48 @@
 body {
 	margin: 0;
 }
-.navbar {
+.hidden {
+	display: none
+}
+.navigationmenu {
+	width: 100%;
+	height: 100vh;
+	color: black;
+	display: none;
+	flex-direction: column;
+	align-items: center;
+	justify-content: flex-start;
+	.menuoptions {
+		width: 100%;
+		height: 94vh;
+		min-height: 350px;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		.menuoption {
+			height: 30px;
+			width: 120px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			margin: 15px;
+			transition: .3s ease;
+			&:hover {
+				border-bottom: 3px solid black;
+			}
+			h3 {
+				margin: 0;
+			}
+			.active {
+
+			}
+		}
+
+	}
+}
+
+.navbarRest{
 	width: 100%;
 	height: 6vh;
 	min-height: 40px;
@@ -14,7 +55,33 @@ body {
 	letter-spacing: 3px;
 	display: none;
 }
+.navbarMenu{
+	width: 100%;
+	height: 6vh;
+	min-height: 40px;
+	color: black;
+	letter-spacing: 3px;
+	display: flex;
+	align-items: center;
+	  	justify-content: space-between;
+		position: fixed;
+		background-color: white;
+		i {
+			margin: 30px;	
+		}
+		a {
+			text-decoration: none;
+			color: black;
+			&:hover {
+				text-decoration: none;
+				color: black;
+			}
+		}
+}
 
+.restofpage {
+	overflow: scroll;
+}
 .pagecontent {
 	width: 100%;
 	height: 100vh;
@@ -23,7 +90,7 @@ body {
 	flex-wrap: wrap;
 	align-items: flex-start;
 	justify-content: flex-start;
-	overflow: scroll;
+	
 }
 
 .leftcolumn {
@@ -34,6 +101,16 @@ body {
 	align-items: center;
 	justify-content: center;
 	position: fixed;
+	.leftTitle {
+		margin-bottom: 30px;
+	}
+	.leftFooter {
+		margin-top: 30px;
+		a {
+			text-decoration: none;
+			color: black;
+		}
+	}
 }
 .rightcolumn {
 	margin-left: 20%;
@@ -72,22 +149,24 @@ body {
   	width: 100%;
   	column-count: 1;
   }
-  .navbar {
-  	display:flex;
-  	align-items: center;
-  	justify-content: space-between;
-	position: fixed;
-	background-color: white;
-	i {
-		margin: 30px;	
-	}
-	a {
-		text-decoration: none;
-		color: black;
-		&:hover {
+
+	.navbarRest {
+	  	display:flex;
+	  	align-items: center;
+	  	justify-content: space-between;
+		position: fixed;
+		background-color: white;
+		i {
+			margin: 30px;	
+		}
+		a {
 			text-decoration: none;
 			color: black;
+			&:hover {
+				text-decoration: none;
+				color: black;
+			}
 		}
 	}
-  }
+  
 }

@@ -1,15 +1,68 @@
+<div class="navigationmenu hidden">
+	<div class="navbarMenu">
+		<%= link_to "https://www.instagram.com/ralphmonet/" do %>
+			<i class="fab fa-instagram"></i>
+		<% end %>
+		<p id="toggleMenuOff">
+			CLOSE<i class="fas fa-times"></i>
+		</p>
+	</div>
+	<div class="menuoptions">
+		<div class="menuoption">
+			<h3><strong>photo album1</strong></h3>
+		</div>
+		<div class="menuoption">
+			<h3>photo album2</h3>
+		</div>
+		<div class="menuoption">
+			<h3>photo album3</h3>
+		</div>
+		<div class="menuoption">
+			<h3>photo album4</h3>
+		</div>
+		<div class="menuoption">
+			<h3>photo album5</h3>
+		</div>
+
+	</div>
+
+</div>
 <div class="restofpage">
-	<div class="navbar">
+	<div class="navbarRest">
 		<%= link_to "https://www.instagram.com/ralphmonet/" do %>
 			<i class="fab fa-instagram"></i>
 		<% end %>
 		<h2>ALEXIS MONET</h2>
-		<i class="fas fa-bars"></i>
+		<i class="fas fa-bars" id="toggleMenuOn"></i>
 
 	</div>
 	<div class="pagecontent">
 		<div class="leftcolumn">
-			<h2>ALEXIS MONET</h2>
+			<div class="leftTitle">
+				<h2>ALEXIS MONET</h2>
+			</div>
+			<div class="div">
+				<div class="navigationoption">
+					<p>photo album1</p>
+				</div>
+				<div class="navigationoption">
+					<p>photo album2</p>
+				</div>
+				<div class="navigationoption">
+					<p>photo album3</p>
+				</div>
+				<div class="navigationoption">
+					<p>photo album4</p>
+				</div>
+				<div class="navigationoption">
+					<p>photo album5</p>
+				</div>
+			</div>
+			<div class="leftFooter">
+				<%= link_to "https://www.instagram.com/ralphmonet/" do %>
+					<i class="fab fa-instagram"></i>
+				<% end %>
+			</div>
 		</div>
 		<div class="rightcolumn">
 				<%= image_tag "ticket_1_derails.jpg" %>
@@ -40,4 +93,13 @@
 		</div>
 	</div>
 </div>
-
+<script>
+	document.querySelector("#toggleMenuOn").addEventListener("click",(e)=>{
+		document.querySelector(".restofpage").classList.add("hidden");
+		document.querySelector(".navigationmenu").style="display:flex"
+	});
+	document.querySelector("#toggleMenuOff").addEventListener("click",(e)=>{
+		document.querySelector(".restofpage").classList.remove("hidden");
+		document.querySelector(".navigationmenu").style="display:none"
+	});
+</script>
