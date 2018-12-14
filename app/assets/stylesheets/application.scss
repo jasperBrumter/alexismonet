@@ -13,3 +13,15 @@
  *= require_tree .
  *= require_self
  */
+
+/*
+ *= require font-awesome
+ */
+
+@import url('https://fonts.googleapis.com/css?family=PT+Sans|Roboto+Condensed:400,700');
+h1, h2, h3, h4, h5, h6 {
+	font-family: 'Roboto Condensed', sans-serif;
+}
+li, p, a {
+	font-family: 'PT Sans', sans-serif;
+}

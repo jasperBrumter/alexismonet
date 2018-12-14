@@ -1,6 +1,8 @@
 // Place all the styles related to the pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
 body {
 	margin: 0;
 }
@@ -8,9 +10,6 @@ body {
 	width: 100%;
 	height: 6vh;
 	min-height: 40px;
-	display: flex;
-	align-items: center;
-	justify-content: center;
 	color: black;
 	letter-spacing: 3px;
 	display: none;
@@ -40,12 +39,11 @@ body {
 	margin-left: 20%;
 	min-margin-left: 200px;
 	width: 80%;
-	display: flex;
-	align-items: flex-start;
-	justify-content: flex-start;
-	flex-wrap: wrap;
+	column-count: 3;
+	padding: 10px;
 	img {
-		width: 33%;
+		width: 100%;
+		margin-top: 8px;
 	}
 
 }
@@ -60,7 +58,11 @@ body {
 	}
 }
 
-
+@media screen and (max-width: 1400px) {
+	.rightcolumn {
+	  	column-count: 2;
+	  }
+}
 @media screen and (max-width: 800px) {
   .leftcolumn {
     display:none;
@@ -68,12 +70,24 @@ body {
   .rightcolumn {
   	margin-left: 0;
   	width: 100%;
+  	column-count: 1;
   }
   .navbar {
   	display:flex;
   	align-items: center;
-  	justify-content: center;
+  	justify-content: space-between;
 	position: fixed;
 	background-color: white;
+	i {
+		margin: 30px;	
+	}
+	a {
+		text-decoration: none;
+		color: black;
+		&:hover {
+			text-decoration: none;
+			color: black;
+		}
+	}
   }
 }
