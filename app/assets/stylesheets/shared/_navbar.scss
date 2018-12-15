@@ -29,9 +29,6 @@
 			h3 {
 				margin: 0;
 			}
-			.active {
-
-			}
 		}
 
 	}
@@ -40,11 +37,12 @@
 .navbarRest{
 	width: 100%;
 	height: 6vh;
-	min-height: 40px;
+	min-height: 55px;
 	color: black;
 	letter-spacing: 3px;
 	display: none;
 	i {
+		font-size: 50px;
 		cursor: pointer;
 	}
 }
@@ -76,7 +74,7 @@
 
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 1000px) {
 	.navbarRest {
 	  	display:flex;
 	  	align-items: center;
