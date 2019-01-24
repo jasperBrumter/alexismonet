@@ -1,0 +1,150 @@
+<%= render "shared/hidden_navbar" %>
+<div class="restofpage">
+	<%= render "shared/visible_navbar" %>
+	<div class="pagecontent">
+		<div class="leftcolumn">
+			<div class="leftTitle">
+				<h2>Travel Blog</h2>
+			</div>
+			<div>
+				<div class="navigationoption">
+					<%= link_to "Vietnam", vietnam_path %> 
+				</div>
+				<div class="navigationoption">
+					<%= link_to "Japan", japan_path %>
+				</div>
+				<div class="navigationoption">
+					<%= link_to "Mexico", mexico_path %>
+				</div>
+				<div class="navigationoption">
+					<i class="fas fa-map-marker-alt"></i>  <%= link_to "Colombia", colombia_path %>
+				</div>
+				<div class="navigationoption">
+					<%= link_to "Morocco", morocco_path %>
+				</div>
+			</div>
+			<div class="leftFooter">
+				<%= link_to "https://www.instagram.com/" do %>
+					<i class="fab fa-instagram"></i>
+				<% end %>
+			</div>
+		</div>
+		<div class="rightcolumn">
+
+				<%= image_tag "colombia1.jpg", class: "image" %>
+				<%= image_tag "colombia2.jpg", class: "image" %>
+				<%= image_tag "colombia3.jpg", class: "image" %>
+				<%= image_tag "colombia4.jpg", class: "image" %>
+				<%= image_tag "colombia5.jpg", class: "image" %>
+				<%= image_tag "colombia6.jpg", class: "image" %>
+				<%= image_tag "colombia7.jpg", class: "image" %>
+
+		</div>
+	</div>
+</div>
+<div class="slideshow hidden">
+	<div class="return">
+		<h1 id="closeSlideshow">CLOSE <i class="fas fa-times"></i></h1>
+	</div>
+	<div class="slides">
+		<div class="slide">
+			<%= image_tag "colombia1.jpg" %>
+		</div>
+		<div class="slide">
+			<%= image_tag "colombia2.jpg" %>
+		</div>
+		<div class="slide">
+			<%= image_tag "colombia3.jpg" %>
+		</div>
+		<div class="slide">
+			<%= image_tag "colombia4.jpg" %>
+		</div>
+		<div class="slide">
+			<%= image_tag "colombia5.jpg" %>
+		</div>
+		<div class="slide">
+			<%= image_tag "colombia6.jpg" %>
+		</div>
+		<div class="slide">
+			<%= image_tag "colombia7.jpg" %>
+		</div>
+	</div>
+</div>
+
+<script>
+	const slideshow = document.querySelector(".slideshow")
+	const restofpage = document.querySelector(".restofpage")
+	const images = document.querySelectorAll(".image")
+
+	const allSlides = document.querySelectorAll(".slide");
+
+	const slideWindow = document.querySelector(".slides")
+
+
+	document.querySelectorAll(".image").forEach((image) => {
+		image.addEventListener("click", (e) => {
+			restofpage.classList.add("hidden")
+			slideshow.classList.remove("hidden")
+			for (let i=0; i< images.length; i++ ) {
+				if (image === images[i]) {
+					var imageIndex = i;
+				}
+			}
+			var fullWidth = slideWindow.scrollWidth;
+			slideWindow.scroll(fullWidth/(allSlides.length) * imageIndex, 0);
+		})
+	})
+	document.querySelector("#closeSlideshow").addEventListener("click", (e) => {
+		restofpage.classList.remove("hidden")
+		slideshow.classList.add("hidden")
+	});
+
+
+	slideWindow.addEventListener("click",(e) => {
+		var windowWidth = window.innerWidth;
+		var fullWidth = slideWindow.scrollWidth;
+		if (e["screenX"] > (windowWidth/2) && slideWindow.scrollLeft % window.innerWidth == 0) {
+
+			if (slideWindow.scrollLeft + window.innerWidth == fullWidth) {
+				slideWindow.scroll(-fullWidth,0);
+			}
+			else {
+				slideWindow.scroll(slideWindow.scrollLeft + fullWidth/(allSlides.length), 0);
+			}
+		}
+		else if (slideWindow.scrollLeft % window.innerWidth == 0) {
+			if (slideWindow.scrollLeft == 0) {
+				slideWindow.scroll(fullWidth,0);
+			}
+			else {
+				slideWindow.scroll(slideWindow.scrollLeft - fullWidth/(allSlides.length), 0);
+			}
+		}
+	})
+
+	window.addEventListener("keyup", (e) => {
+		var windowWidth = window.innerWidth;
+		var fullWidth = slideWindow.scrollWidth;
+		if (e["key"] == "Escape") {
+			restofpage.classList.remove("hidden")
+			slideshow.classList.add("hidden")
+		}
+		if (e["key"] == "ArrowRight" && slideWindow.scrollLeft % window.innerWidth == 0) {
+			if (slideWindow.scrollLeft + window.innerWidth == fullWidth) {
+				slideWindow.scroll(-fullWidth,0);
+			}
+			else {
+				slideWindow.scroll(slideWindow.scrollLeft + fullWidth/(allSlides.length), 0);
+			}
+		}
+		if (e["key"] == "ArrowLeft" && slideWindow.scrollLeft % window.innerWidth == 0) {
+			if (slideWindow.scrollLeft == 0) {
+				slideWindow.scroll(fullWidth,0);
+			}
+			else {
+				slideWindow.scroll(slideWindow.scrollLeft - fullWidth/(allSlides.length), 0);
+			}
+		}
+	})
+
+</script>
