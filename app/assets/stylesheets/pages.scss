@@ -17,7 +17,6 @@ body {
 .pagecontent {
 	width: 100%;
 	height: 100vh;
-	padding: 2px 0;
 	display: flex;
 	flex-wrap: wrap;
 	align-items: flex-start;
@@ -27,7 +26,7 @@ body {
 
 .leftcolumn {
 	width: 20%;
-	height: 100%;
+	height: 100vh;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -48,7 +47,6 @@ body {
 	}
 }
 .rightcolumn {
-	margin-top: 6vh;
 	margin-left: 20%;
 	min-margin-left: 200px;
 	width: 80%;
@@ -56,7 +54,7 @@ body {
 	padding: 10px;
 	img {
 		width: 100%;
-		margin-top: 8px;
+		margin-top: 12px;
 		cursor: zoom-in;
 	}
 
@@ -104,11 +102,16 @@ body {
 		width: 100%;
 		height: 6vh;
 		display: flex;
+		flex-direction: column;
 		align-items: center;
 		justify-content: center;
+		* {
+			margin: 0 !important;
+		}
 		h1 {
 			cursor: pointer;
 			letter-spacing: 2px;
+			font-size: 25px;
 		}
 	}
 	.slides {

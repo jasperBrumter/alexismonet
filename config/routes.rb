@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-	get "/", to: "pages#vietnam", as: :vietnam
-	get '/japan', to: "pages#japan", as: :japan
+	get "/", to: "pages#japan", as: :japan
+	get '/vietnam', to: "pages#vietnam", as: :vietnam
 	get '/colombia', to: "pages#colombia", as: :colombia
 	get '/morocco', to: "pages#morocco", as: :morocco
 	get '/mexico', to: "pages#mexico", as: :mexico
