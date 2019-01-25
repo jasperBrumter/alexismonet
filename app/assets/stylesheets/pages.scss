@@ -7,9 +7,7 @@ body {
 	margin: 0;
 }
 
-* {
-	-webkit-overflow-scrolling: touch !important;
-}
+
 .hidden {
 	display: none !important
 }
@@ -60,6 +58,7 @@ body {
 		width: 100%;
 		margin-top: 12px;
 		cursor: zoom-in;
+		-webkit-overflow-scrolling: touch !important;
 	}
 
 }
