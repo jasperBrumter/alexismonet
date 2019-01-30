@@ -14,6 +14,7 @@ body {
 
 .restofpage {
 	overflow: scroll;
+  	-webkit-overflow-scrolling: touch;
 }
 
 .pagecontent {
@@ -23,8 +24,6 @@ body {
 	flex-wrap: wrap;
 	align-items: flex-start;
 	justify-content: flex-start;
-	overflow-y: scroll;
-  	-webkit-overflow-scrolling: touch;
 }
 
 .leftcolumn {
